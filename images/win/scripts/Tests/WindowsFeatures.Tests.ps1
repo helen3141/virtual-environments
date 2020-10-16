@@ -25,11 +25,11 @@ Describe "WindowsFeatures" {
     # }
 }
 
-Describe "ContainersFeature" {
-    It "Windows containers feature is installed" {
-        (Get-WindowsFeature -Name "Containers").InstallState | Should -Be "Installed"
-    }
-}
+# Describe "ContainersFeature" {
+#     It "Windows containers feature is installed" {
+#         (Get-WindowsFeature -Name "Containers").InstallState | Should -Be "Installed"
+#     }
+# }
 
 Describe "DiskSpace" {
     It "The image has enough disk space"{
