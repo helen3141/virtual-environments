@@ -120,23 +120,23 @@ Describe "Firefox" {
     }
 }
 
-Describe "Internet Explorer" {
-    Context "WebDriver" {
-        It "IEWebDriver environment variable and path exists" {
-            $env:IEWebDriver | Should -Not -BeNullOrEmpty
-            $env:IEWebDriver | Should -BeExactly "C:\SeleniumWebDrivers\IEDriver"
-            $env:IEWebDriver | Should -Exist
-        }
+# Describe "Internet Explorer" {
+#     Context "WebDriver" {
+#         It "IEWebDriver environment variable and path exists" {
+#             $env:IEWebDriver | Should -Not -BeNullOrEmpty
+#             $env:IEWebDriver | Should -BeExactly "C:\SeleniumWebDrivers\IEDriver"
+#             $env:IEWebDriver | Should -Exist
+#         }
 
-        It "iedriverserver.exe is installed" {
-            "$env:IEWebDriver\IEDriverServer.exe --version" | Should -ReturnZeroExitCode
-        }
+#         It "iedriverserver.exe is installed" {
+#             "$env:IEWebDriver\IEDriverServer.exe --version" | Should -ReturnZeroExitCode
+#         }
 
-        It "versioninfo.txt exists" {
-            "$env:IEWebDriver\versioninfo.txt" | Should -Exist
-        }
-    }
-}
+#         It "versioninfo.txt exists" {
+#             "$env:IEWebDriver\versioninfo.txt" | Should -Exist
+#         }
+#     }
+# }
 
 Describe "Selenium" {
     It "Selenium 'C:\selenium' path exists" {
