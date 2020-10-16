@@ -26,7 +26,7 @@ function Get-BoostMarkdown
    is loaded and this module returns with no further action.
    See documentation of the Boost CMake package configuration for details on what it provides.
    Set Boost_NO_BOOST_CMAKE to ON, to disable the search for boost-cmake.
-   Link: https://cmake.org/cmake/help/latest/module/FindBoost.html
+   Link: https://cmake.org/cmake/help/latest/module/Find.html
 ```
 '@
 
@@ -106,12 +106,10 @@ function Get-PyPyMarkdown
 function Build-CachedToolsMarkdown
 {
     $markdown = ""
-    $markdown += Get-BoostMarkdown
     $markdown += Get-GoMarkdown
     $markdown += Get-NodeMarkdown
     $markdown += Get-PythonMarkdown
     $markdown += Get-RubyMarkdown
-    $markdown += Get-PyPyMarkdown
 
     return $markdown
 }

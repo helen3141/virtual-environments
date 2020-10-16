@@ -176,7 +176,7 @@ Note: MSYS2 is pre-installed on image but not added to PATH.
 | 2.7.1   | x64          |
 
 
-#### PyPy
+#### 
 | Python Version | Architecture | PyPy Version |
 | -------------- | ------------ | ------------ |
 | 2.7.13         | x86          | PyPy 7.3.2 with MSC v.1927 32 bit |

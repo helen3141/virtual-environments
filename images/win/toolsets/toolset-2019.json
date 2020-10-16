@@ -28,15 +28,6 @@
             ]
         },
         {
-            "name": "PyPy",
-            "arch": "x86",
-            "platform" : "win32",
-            "versions": [
-                "2.7",
-                "3.6"
-            ]
-        },
-        {
             "name": "node",
             "url" : "https://raw.githubusercontent.com/actions/node-versions/main/versions-manifest.json",
             "arch": "x64",
@@ -63,26 +54,6 @@
                 "1.15.*"
             ],
             "default": "1.14.*"
-        },
-        {
-            "name": "Boost",
-            "url" : "https://raw.githubusercontent.com/actions/boost-versions/main/versions-manifest.json",
-            "arch": "x86_64",
-            "platform" : "win32",
-            "toolset": "msvc14.1",
-            "versions": [
-                "1.69.0"
-            ]
-        },
-        {
-            "name": "Boost",
-            "url" : "https://raw.githubusercontent.com/actions/boost-versions/main/versions-manifest.json",
-            "arch": "x86_64",
-            "platform" : "win32",
-            "toolset": "msvc14.2",
-            "versions": [
-                "1.72.0"
-            ]
         }
     ],
     "powershellModules": [
@@ -209,7 +180,6 @@
             "Microsoft.VisualStudio.Component.VC.Runtimes.ARM.Spectre",
             "Microsoft.VisualStudio.Component.VC.Runtimes.ARM64.Spectre",
             "Microsoft.VisualStudio.Component.VC.Runtimes.x86.x64.Spectre",
-            "Microsoft.VisualStudio.Component.VC.TestAdapterForBoostTest",
             "Microsoft.VisualStudio.Component.VC.TestAdapterForGoogleTest",
             "Microsoft.VisualStudio.Component.VC.v141.x86.x64",
             "Microsoft.VisualStudio.Component.VC.v141.x86.x64.Spectre",

@@ -39,9 +39,6 @@ $toolsEnvironmentVariables = @{
             "{0}\Scripts"
         )
     }
-    Boost = @{
-        variableTemplate = "BOOST_ROOT_{0}_{1}_{2}"
-    }
     go = @{
         pathTemplates = @(
             "{0}\bin"

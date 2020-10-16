@@ -34,7 +34,7 @@ $ErrorActionPreference = "Stop"
 Import-Module -Name ImageHelpers -Force
 
 # Get toolcache content from toolset
-$ToolsToInstall = @("Python", "Node", "Boost", "Go")
+$ToolsToInstall = @("Python", "Node", "Go")
 
 $tools = Get-ToolsetContent | Select-Object -ExpandProperty toolcache | Where {$ToolsToInstall -contains $_.Name}
 
