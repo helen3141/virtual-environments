@@ -48,7 +48,7 @@ $toolsEnvironmentVariables = @{
     }
 }
 
-$toolsToConfigure = @("Python", "Boost", "Go")
+$toolsToConfigure = @("Python", "Go")
 $tools = Get-ToolsetContent | Select-Object -ExpandProperty toolcache `
                             | Where-Object { $toolsToConfigure -contains $_.name }
 
