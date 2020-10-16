@@ -8,7 +8,7 @@ function Get-PyPyVersions
     $uri = "https://downloads.python.org/pypy/"
     try
     {
-        $hrefs = (Invoke-WebRequest -Uri $uri).Links.href
+        $hrefs = (Invoke-WebRequest -Uri $uri -UseBasicParsing).Links.href
         $hrefs | Where-Object {$_ -match '^pypy'} | Select-Object @{n = "Name"; e = {$_}}, @{n = "href"; e = {
             [string]::Join('', ($uri, $_))
         }}
