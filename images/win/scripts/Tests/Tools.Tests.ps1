@@ -66,18 +66,18 @@ Describe "DACFx" {
     }
  }
 
-Describe "Docker" {
-    It "<ToolName>" -TestCases @(
-        @{ ToolName = "docker" }
-        @{ ToolName = "docker-compose" }
-    ) {
-        "$ToolName --version"| Should -ReturnZeroExitCode
-    }
+# Describe "Docker" {
+#     It "<ToolName>" -TestCases @(
+#         @{ ToolName = "docker" }
+#         @{ ToolName = "docker-compose" }
+#     ) {
+#         "$ToolName --version"| Should -ReturnZeroExitCode
+#     }
 
-    It "Helm" {
-        "helm version --short" | Should -ReturnZeroExitCode
-    }
-}
+#     It "Helm" {
+#         "helm version --short" | Should -ReturnZeroExitCode
+#     }
+# }
 
 Describe "Kind" {
     It "Kind" {

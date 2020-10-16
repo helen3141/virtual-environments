@@ -38,17 +38,6 @@ function Get-CodeQLBundleVersion {
     return "CodeQL Action Bundle $CodeQLVersion"
 }
 
-function Get-DockerVersion {
-    $dockerVersion = $(docker version --format "{{.Server.Version}}")
-    return "Docker $dockerVersion"
-}
-
-function Get-DockerComposeVersion {
-    $(docker-compose --version) -match "docker-compose version (?<version>\d+\.\d+\.\d+)" | Out-Null
-    $dockerComposeVersion = $Matches.Version
-    return "Docker-compose $dockerComposeVersion"
-}
-
 function Get-GitVersion {
     $(git version) -match "git version (?<version>\d+\.\d+\.\d+)" | Out-Null
     $gitVersion = $Matches.Version

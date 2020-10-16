@@ -258,9 +258,6 @@ function Get-PowerShellModules {
     }
 }
 
-function Get-CachedDockerImages {
-    return (docker images --digests --format "* {{.Repository}}:{{.Tag}}").Split("*") | Where-Object { $_ }
-}
 
 function Get-PacmanVersion {
     $msys2BinDir = "C:\msys64\usr\bin"
