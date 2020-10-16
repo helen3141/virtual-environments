@@ -14,15 +14,15 @@ Describe "WindowsFeatures" {
         $testCases += @{ FeatureName = "Microsoft-Windows-Subsystem-Linux" }
     }
 
-    It "Windows Feature <FeatureName> is installed" -TestCases $testCases {
-        (Get-WindowsFeature -Name $FeatureName).InstallState | Should -Be "Installed"
-    }
+    # It "Windows Feature <FeatureName> is installed" -TestCases $testCases {
+    #     (Get-WindowsFeature -Name $FeatureName).InstallState | Should -Be "Installed"
+    # }
 
-    if (Test-isWin19) {
-        it "Check WSL is on path" {
-            (Get-Command -Name 'wsl') | Should -BeTrue
-        }
-    }
+    # if (Test-isWin19) {
+    #     it "Check WSL is on path" {
+    #         (Get-Command -Name 'wsl') | Should -BeTrue
+    #     }
+    # }
 }
 
 Describe "ContainersFeature" {
