@@ -1,55 +1,3 @@
-Describe "Chrome" {
-    Context "WebDriver" {
-        It "ChromeWebDriver environment variable and path exists" {
-            $env:ChromeWebDriver | Should -Not -BeNullOrEmpty
-            $env:ChromeWebDriver | Should -BeExactly "C:\SeleniumWebDrivers\ChromeDriver"
-            $env:ChromeWebDriver | Should -Exist
-        }
-
-        It "chromedriver.exe is installed" {
-            "$env:ChromeWebDriver\chromedriver.exe --version" | Should -ReturnZeroExitCode
-        }
-
-        It "versioninfo.txt exists" {
-            "$env:ChromeWebDriver\versioninfo.txt" | Should -Exist
-        }
-    }
-
-    Context "Browser" {
-        $chromeRegPath = "HKLM:SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe"
-        $chromePath = (Get-ItemProperty $chromeRegPath).'(default)'
-
-        It "Chrome '<chromeRegPath>' registry path exists" -TestCases @{chromeRegPath = $chromeRegPath} {
-            $chromeRegPath | Should -Exist
-        }
-
-        It "Chrome VersionInfo registry value exists" -TestCases @{chromePath = $chromePath} {
-            $versionInfo = (Get-Item $chromePath).VersionInfo
-            $versionInfo | Should -Not -BeNullOrEmpty
-        }
-
-        It "gupdate service is stopped" {
-            $svc = Get-Service -Name gupdate
-            $svc.Status | Should -BeExactly Stopped
-        }
-
-        It "gupdatem service is stopped" {
-            $svc = Get-Service -Name gupdatem
-            $svc.Status | Should -BeExactly Stopped
-        }
-
-        It "BlockGoogleUpdate firewall rule exists" {
-            Get-NetFirewallRule -DisplayName BlockGoogleUpdate | Should -Not -BeNullOrEmpty
-        }
-
-        It "<chromePath> is installed" -TestCases @{chromePath = $chromePath} {
-            $chromeName = (Get-Item $chromePath).Name
-            $chromePath | Should -Exist
-            $chromeName | Should -BeExactly "chrome.exe"
-        }
-    }
-}
-
 Describe "Edge" {
     Context "WebDriver" {
         It "EdgeWebDriver environment variable and path exists" {
@@ -81,41 +29,6 @@ Describe "Edge" {
 
         It "msedge.exe is installed" {
             "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe" | Should -Exist
-        }
-    }
-}
-
-Describe "Firefox" {
-    Context "WebDriver" {
-        It "GeckoWebDriver environment variable and path exists" {
-            $env:GeckoWebDriver | Should -Not -BeNullOrEmpty
-            $env:GeckoWebDriver | Should -BeExactly "C:\SeleniumWebDrivers\GeckoDriver"
-            $env:GeckoWebDriver | Should -Exist
-        }
-
-        It "geckodriver.exe is installed" {
-            "$env:GeckoWebDriver\geckodriver.exe --version" | Should -ReturnZeroExitCode
-        }
-
-        It "versioninfo.txt exists" {
-            "$env:GeckoWebDriver\versioninfo.txt" | Should -Exist
-        }
-    }
-
-    Context "Browser" {
-        $firefoxRegPath = "HKLM:SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\firefox.exe"
-
-        It "Firefox '<firefoxRegPath>' registry path exists" -TestCases @{firefoxRegPath = $firefoxRegPath} {
-            $firefoxRegPath | Should -Exist
-        }
-
-        It "Firefox VersionInfo registry value exists" -TestCases @{firefoxRegPath = $firefoxRegPath} {
-            $versionInfo = (Get-Item (Get-ItemProperty $firefoxRegPath).'(Default)').VersionInfo
-            $versionInfo | Should -Not -BeNullOrEmpty
-        }
-
-        It "firefox.exe is installed" {
-            "$env:ProgramFiles\Mozilla Firefox\firefox.exe" | Should -Exist
         }
     }
 }
