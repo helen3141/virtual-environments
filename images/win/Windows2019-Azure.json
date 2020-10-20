@@ -43,7 +43,6 @@
             "subscription_id": "{{user `subscription_id`}}",
             "object_id": "{{user `object_id`}}",
             "tenant_id": "{{user `tenant_id`}}",
-            "os_disk_size_gb": "256",
             "location": "{{user `location`}}",
             "vm_size": "{{user `vm_size`}}",
             "resource_group_name": "{{user `resource_group`}}",
@@ -63,6 +62,56 @@
             "winrm_use_ssl": "true",
             "winrm_insecure": "true",
             "winrm_username": "packer"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "powershell",
+            "inline":[
+                "New-Item -Path {{user `image_folder`}} -ItemType Directory -Force",
+                "Write-Output {{user `commit_id`}} > {{user `commit_file`}}",
+                "Write-Host (Get-Content -Path {{user `commit_file`}})"
+            ]
+        },
+        {
+            "type": "file",
+            "source": "{{ template_dir }}/scripts/ImageHelpers",
+            "destination": "{{user `helper_script_folder`}}"
+        },
+        {
+            "type": "file",
+            "source": "{{ template_dir }}/scripts/SoftwareReport",
+            "destination": "{{user `image_folder`}}"
+        },
+        {
+            "type": "file",
+            "source": "{{ template_dir }}/scripts/Tests",
+            "destination": "{{user `image_folder`}}"
+        },
+        {
+            "type": "windows-shell",
+            "inline": [
+                "net user {{user `install_user`}} {{user `install_password`}} /add /passwordchg:no /passwordreq:yes /active:yes /Y" ,
+                "net localgroup Administrators {{user `install_user`}} /add",
+                "winrm set winrm/config/service/auth @{Basic=\"true\"}",
+                "winrm get winrm/config/service/auth"
+            ]
+        },
+        {
+            "type": "powershell",
+            "inline": [
+                "if (-not ((net localgroup Administrators) -contains '{{user `install_user`}}')) { exit 1 }"
+            ]
+        },
+        {
+            "type": "powershell",
+            "environment_vars": [
+                "ImageVersion={{user `image_version`}}"
+            ],
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Windows2019/Initialize-VM.ps1"
+            ],
+            "execution_policy": "unrestricted"
         }
     ]
 }

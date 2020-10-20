@@ -71,12 +71,6 @@ if ( $fsResult.Success ) {
 Write-Host "Disable UAC"
 Disable-UserAccessControl
 
-Write-Host "Disable IE Welcome Screen"
-Disable-InternetExplorerWelcomeScreen
-
-Write-Host "Disable IE ESC"
-Disable-InternetExplorerESC
-
 Write-Host "Setting local execution policy"
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine  -ErrorAction Continue | Out-Null
 Get-ExecutionPolicy -List
@@ -120,14 +114,4 @@ Remove-Item -Path $env:ChocolateyInstall\bin\cpack.exe -Force
 
 # Install webpi
 Choco-Install -PackageName webpicmd
-
-# Expand disk size of OS drive
-New-Item -Path d:\ -Name cmds.txt -ItemType File -Force
-Add-Content -Path d:\cmds.txt "SELECT VOLUME=C`r`nEXTEND"
-
-$expandResult = (diskpart /s 'd:\cmds.txt')
-Write-Host $expandResult
-
-Write-Host "Disk sizes after expansion"
-wmic logicaldisk get size,freespace,caption
 
