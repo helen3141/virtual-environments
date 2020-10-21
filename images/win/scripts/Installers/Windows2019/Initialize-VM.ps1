@@ -101,3 +101,4 @@ Remove-Item -Path $env:ChocolateyInstall\bin\cpack.exe -Force
 # Install webpi
 Choco-Install -PackageName webpicmd
 
+DISM.exe /Online /Add-Capability /CapabilityName:Microsoft.WebDriver~~~~0.0.1.0
