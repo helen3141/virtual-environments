@@ -2,7 +2,6 @@
 ##  File:  Finalize-VM.ps1
 ##  Desc:  Clean up temp folders after installs to save space
 ################################################################################
-DISM.exe /Online /Add-Capability /CapabilityName:Microsoft.WebDriver~~~~0.0.1.0
 
 Write-Host "Cleanup WinSxS"
 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
