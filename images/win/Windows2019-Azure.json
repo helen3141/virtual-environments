@@ -167,17 +167,13 @@
             ]
         },
         {
-            "type": "windows-restart",
-            "restart_timeout": "10m"
-        },
-        {
             "type": "file",
             "source": "{{template_dir}}/toolsets/toolset-2019.json",
             "destination": "{{user `toolset_json_path`}}"
         },
         {
-            "type": "windows-shell",
-            "inline": ["wmic product where \"name like '%%microsoft azure powershell%%'\" call uninstall /nointeractive"]
+            "type": "windows-restart",
+            "restart_timeout": "10m"
         },
         {
             "type": "powershell",
