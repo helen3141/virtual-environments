@@ -138,20 +138,41 @@
         },
         {
             "type": "powershell",
-            "environment_vars": [
-                "TOOLSET_JSON_PATH={{user `toolset_json_path`}}"
-            ],
-            "scripts": [
-                "{{ template_dir }}/scripts/Installers/Install-AzureCli.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-AzureDevOpsCli.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-AzCopy.ps1",
-                "{{ template_dir }}/scripts/Installers/Install-AzureDevSpacesCli.ps1",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-AzureCli.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-AzureDevOpsCli.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-AzCopy.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
                 "{{ template_dir }}/scripts/Installers/Install-NodeLts.ps1"
+            ]
+        },
+        {
+            "type": "powershell",
+            "scripts":[
+                "{{ template_dir }}/scripts/Installers/Install-7zip.ps1"
             ]
         },
         {
             "type": "windows-restart",
             "restart_timeout": "10m"
+        },
+        {
+            "type": "windows-shell",
+            "inline": ["wmic product where \"name like '%%microsoft azure powershell%%'\" call uninstall /nointeractive"]
         },
         {
             "type": "powershell",
