@@ -183,7 +183,6 @@
                 "PSMODULES_ROOT_FOLDER={{user `psmodules_root_folder`}}"
             ],
             "scripts":[
-                "{{ template_dir }}/scripts/Installers/Install-Toolset.ps1",
                 "{{ template_dir }}/scripts/Installers/Install-AzureModules.ps1"
             ]
         },
