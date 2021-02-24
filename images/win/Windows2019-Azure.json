@@ -14,7 +14,7 @@
         "virtual_network_resource_group_name": "{{env `VNET_RESOURCE_GROUP`}}",
         "virtual_network_subnet_name": "{{env `VNET_SUBNET`}}",
         "private_virtual_network_with_public_ip": "{{env `PRIVATE_VIRTUAL_NETWORK_WITH_PUBLIC_IP`}}",
-        "vm_size": "Standard_DS1_v2",
+        "vm_size": "Standard_B1ms",
         "run_scan_antivirus": "false",
 
         "root_folder": "C:",
@@ -57,7 +57,7 @@
             "os_type": "Windows",
             "image_publisher": "MicrosoftWindowsDesktop",
             "image_offer": "Windows-10",
-            "image_sku": "20h1-pro",
+            "image_sku": "rs4-pro",
             "communicator": "winrm",
             "winrm_use_ssl": "true",
             "winrm_insecure": "true",
