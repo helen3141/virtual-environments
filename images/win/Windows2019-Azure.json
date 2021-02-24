@@ -120,7 +120,7 @@
         {
             "type": "powershell",
             "inline": [
-                "DISM.exe /Online /Add-Capability /CapabilityName:Microsoft.WebDriver~~~~0.0.1.0"
+                "Install-Binary -Url 'https://download.microsoft.com/download/F/8/A/F8AF50AB-3C3A-4BC4-8773-DC27B32988DD/MicrosoftWebDriver.exe' -Name 'EdgeWebDriver'"
             ],
             "execution_policy": "unrestricted",
             "elevated_user": "SYSTEM",
