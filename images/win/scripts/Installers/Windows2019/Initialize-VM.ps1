@@ -31,7 +31,7 @@ function Disable-UserAccessControl {
 }
 
 Import-Module -Name ImageHelpers -Force
-
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor "Tls12"
 Write-Host "Setup PowerShellGet"
 # Set-PSRepository -InstallationPolicy Trusted -Name PSGallery
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
