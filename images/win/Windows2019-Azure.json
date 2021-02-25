@@ -119,17 +119,6 @@
         },
         {
             "type": "powershell",
-            "inline": [
-                "$filePath = Start-DownloadWithRetry -Url 'https://download.microsoft.com/download/F/8/A/F8AF50AB-3C3A-4BC4-8773-DC27B32988DD/MicrosoftWebDriver.exe' -Name 'MicrosoftWebDriver.exe'",
-                "[System.Environment]::SetEnvironmentVariable('EdgeWebDriver', $filePath, [System.EnvironmentVariableTarget]::Machine)",
-                "[System.Environment]::SetEnvironmentVariable('EdgeWebDriver', $filePath, [System.EnvironmentVariableTarget]::User)"
-            ],
-            "execution_policy": "unrestricted",
-            "elevated_user": "SYSTEM",
-            "elevated_password": ""
-        },
-        {
-            "type": "powershell",
             "scripts":[
                 "{{ template_dir }}/scripts/Installers/Install-PowershellCore.ps1"
             ]
