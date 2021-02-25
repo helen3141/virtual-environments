@@ -30,6 +30,7 @@ function Install-Binary
     )
 
     Write-Host "Downloading $Name..."
+    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor "Tls12"
     $filePath = Start-DownloadWithRetry -Url $Url -Name $Name
 
     # MSI binaries should be installed via msiexec.exe
@@ -88,6 +89,7 @@ Function Install-VisualStudio
 
     Write-Host "Downloading Bootstrapper ..."
     $BootstrapperName = [IO.Path]::GetFileName($BootstrapperUrl)
+    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor "Tls12"
     $bootstrapperFilePath = Start-DownloadWithRetry -Url $BootstrapperUrl -Name $BootstrapperName
 
     try
